@@ -2,6 +2,7 @@
 Project to update library holdings to vendor platforms
 
 Steps of the project:
+
 	1. Create a Query Collection
 	2. Save MARC delivery as CSV File using MARC Edit.
 		a. Export as tab (or comma) delimited values
