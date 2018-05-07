@@ -3,6 +3,11 @@ Adobe digital ed
 (Adobe digital ed ;
 (Adobe digital ed);
 Adobe digital ed;
+(digital)
+digital
+(digital ;
+(digital);
+digital;
 (ebk)
 ebk
 (ebk ;
@@ -13,11 +18,31 @@ ebook
 (ebook ;
 (ebook);
 ebook;
+eBook
+(eBook)
+(eBook ;
+(eBook);
+eBook;
 (e-book)
 e-book
 (e-book ;
 (e-book);
 e-book;
+(e-Book)
+e-Book
+(e-Book ;
+(e-Book);
+e-Book;
+(E-book)
+E-book
+(E-book ;
+(E-book);
+E-book;
+(E-Book)
+E-Book
+(E-Book ;
+(E-Book);
+E-Book;
 (ebook-Mobi/Kindle)
 ebook-Mobi/Kindle
 (ebook-Mobi/Kindle ;
@@ -91,3 +116,8 @@ web pdf
 (web pdf ;
 (web pdf);
 web pdf;
+(web PDF)
+web PDF 
+(web PDF ;
+(web PDF);
+web PDF;
