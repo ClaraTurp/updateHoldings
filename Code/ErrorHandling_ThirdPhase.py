@@ -5,13 +5,13 @@ stopWords = ["AND", "A", "AN", "&", "THE", "OF", "FOR"]
 marcSymbolArray = ["$", "/", ":", ";"]
 
 #Keep only up to 4 words of the title for all titles returned from GOBI.
-gobiArray = []
+gobiDictionary = {}
 gobiListFile = open("gobi_list.csv", "r", encoding = "utf-8", errors = "ignore")
 reader = csv.reader(gobiListFile)
 for row in reader:
     titleWords = ""
     wordCount = 0
-    if len(row[0]) > 0:
+    if len(row[0]) > 0 and row[6] == "eBook":
         title = row[0].split(":")
         title = title[0]
         titleArray = title.split(" ")
@@ -40,11 +40,11 @@ for row in reader:
         titleWords = titleWords.translate(translator)
         titleWords = titleWords.strip()
 
-        if titleWords not in gobiArray:
-            gobiArray.append(titleWords)
+        if titleWords not in gobiDictionary:
+            gobiDictionary[titleWords] = row[5]
 
 #Keep only up to 4 words of the title for all titles from the original file.
-oriArray = []
+oriDictionary = {}
 oriListFile = open("firstResults.csv", "r", encoding = "utf-8", errors = "ignore")
 reader = csv.reader(oriListFile)
 for row in reader:
@@ -77,15 +77,12 @@ for row in reader:
     titleWords = titleWords.translate(translator)
     titleWords = titleWords.strip()
 
-    if titleWords not in oriArray:
-        oriArray.append(titleWords)
-
-#Sort both arrays (mostly for readability purposes)
-oriArray = sorted(oriArray)
-gobiArray = sorted(gobiArray)
+    if titleWords not in oriDictionary:
+        oriDictionary[titleWords] = row[1]
 
 #If the transformed title from GOBI doesn't match any transformed titles from the original list, print in error file.
-printFile = open("3_ErrorsTitleMatch.txt", "w")
-for instance in gobiArray:
-    if instance not in oriArray:
-        printFile.write(instance+ "\n")
+myPrintFile = open("3_ErrorsTitleMatch.csv", "w", newline = "", encoding="utf-8", errors= "ignore" )
+writer = csv.writer(myPrintFile)
+for key in gobiDictionary:
+    if key not in oriDictionary:
+        writer.writerow([key, gobiDictionary[key]])
