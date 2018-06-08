@@ -2,7 +2,7 @@ import csv
 import requests
 import json
 
-subsCollection = ["<kb:collection_uid>collection_Name</kb:collection_uid>"]
+subsCollection = ["collection_Name", "collection_Name2", "collection_Name3"]
 
 realSubscriptionTitles = []
 perpetualTitles = []
@@ -22,7 +22,7 @@ for row in reader:
     #for m in re.findall("<kb:collection_uid>[A-Za-z0-9._-]*</kb:collection_uid>", data):
     m = 0
     allIterations = []
-    allIterations = re.findall("<kb:collection_uid>[A-Za-z0-9._-]*</kb:collection_uid>", data)
+    allIterations = re.findall("<kb:collection_uid>([A-Za-z0-9._-]*)</kb:collection_uid>", data)
     while m < len(allIterations) and matchFound == False:
         if allIterations[m] not in subsCollection :
             matchFound = True
