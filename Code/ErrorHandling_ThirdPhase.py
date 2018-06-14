@@ -1,7 +1,7 @@
 import csv
 import string
 
-stopWords = ["AND", "A", "AN", "&", "THE", "OF", "FOR"]
+stopWords = ["AND", "A", "AN", "&", "THE", "OF", "FOR", "LE", "LA", "LES", "DU", "DES", "UN", "DAS", "UND", "DER"]
 marcSymbolArray = ["$", "/", ":", ";"]
 
 #Keep only up to 4 words of the title for all titles returned from GOBI.
