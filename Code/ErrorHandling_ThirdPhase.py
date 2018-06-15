@@ -41,7 +41,7 @@ for row in reader:
         titleWords = titleWords.strip()
 
         if titleWords not in gobiDictionary:
-            gobiDictionary[titleWords] = row[5]
+            gobiDictionary[titleWords] = [row[5], row[0]]
 
 #Keep only up to 4 words of the title for all titles from the original file.
 oriDictionary = {}
@@ -83,8 +83,8 @@ for row in reader:
 #Create a final Dictionary where the key is the ISBN
 myFinalDic = {}
 for key in gobiDictionary:
-    if key not in oriDictionary and gobiDictionary[key] not in myFinalDic:
-        myFinalDic[gobiDictionary[key]] = key
+    if key not in oriDictionary and gobiDictionary[key][0] not in myFinalDic:
+        myFinalDic[gobiDictionary[key][0]] = gobiDictionary[key][1]
 
 #Print the title from GOBI, the ISBN, and the original title.
 isbnList = []
