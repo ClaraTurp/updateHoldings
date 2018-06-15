@@ -80,9 +80,20 @@ for row in reader:
     if titleWords not in oriDictionary:
         oriDictionary[titleWords] = row[1]
 
-#If the transformed title from GOBI doesn't match any transformed titles from the original list, print in error file.
+#Create a final Dictionary where the key is the ISBN
+myFinalDic = {}
+for key in gobiDictionary:
+    if key not in oriDictionary and gobiDictionary[key] not in myFinalDic:
+        myFinalDic[gobiDictionary[key]] = key
+
+#Print the title from GOBI, the ISBN, and the original title.
+isbnList = []
 myPrintFile = open("3_ErrorsTitleMatch.csv", "w", newline = "", encoding="utf-8", errors= "ignore" )
 writer = csv.writer(myPrintFile)
-for key in gobiDictionary:
-    if key not in oriDictionary:
-        writer.writerow([key, gobiDictionary[key]])
+oriListFile = open("1_FirstResults.csv", "r", encoding = "utf-8", errors = "ignore")
+reader = csv.reader(oriListFile)
+for row in reader:
+    if row[1] in myFinalDic and row[1] not in isbnList:
+        isbnList.append(row[1])
+        writer.writerow([myFinalDic[row[1]], row[1], row[2]])
+
