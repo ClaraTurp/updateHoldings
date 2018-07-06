@@ -1,3 +1,6 @@
+## 2018-07-06 Clara Turp, for McGill University Library.
+
+
 import csv
 import requests
 import json
